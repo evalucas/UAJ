@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{f6642e22-4671-4e4b-9a64-5d035df9ce6e}">
+		<property name="assetPath">
+			<value>Pasos/Pasos2.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.49958333333333332</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f87a89b9-93da-4baf-9f75-c8be7393c068}</destination>
+		</relationship>
+	</object>
+</objects>
