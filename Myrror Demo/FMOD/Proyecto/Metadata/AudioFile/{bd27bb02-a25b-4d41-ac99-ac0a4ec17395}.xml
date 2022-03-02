@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{bd27bb02-a25b-4d41-ac99-ac0a4ec17395}">
+		<property name="assetPath">
+			<value>Ruido blanco.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>659.73599999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f87a89b9-93da-4baf-9f75-c8be7393c068}</destination>
+		</relationship>
+	</object>
+</objects>

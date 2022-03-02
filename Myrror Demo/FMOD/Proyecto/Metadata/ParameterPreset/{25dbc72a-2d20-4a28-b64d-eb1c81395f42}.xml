@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{25dbc72a-2d20-4a28-b64d-eb1c81395f42}">
+		<property name="name">
+			<value>Andando</value>
+		</property>
+		<relationship name="folder">
+			<destination>{8ff84edb-8791-496e-8cfd-98b79003435a}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{84ee60f3-f056-432a-b25b-a40272975c2a}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{84ee60f3-f056-432a-b25b-a40272975c2a}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
