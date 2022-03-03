@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour {
             Destroy(this.gameObject);
         }
     }
-#if UNITY_EDITOR
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F1))
@@ -48,7 +47,6 @@ public class GameManager : MonoBehaviour {
         }
 
     }
-#endif
 
     //Recibe a un GameObject y lo establece como el "player"
     public void SetPlayer(GameObject thisPlayer)
