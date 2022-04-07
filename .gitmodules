@@ -1,0 +1,3 @@
+[submodule "Telemetria_G06"]
+	path = Telemetria_G06
+	url = https://github.com/dagodoy/Telemetria_G06.git
