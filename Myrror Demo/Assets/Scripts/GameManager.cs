@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Grupo06;
 
 public class GameManager : MonoBehaviour {
 
@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour {
     public void SetPlayer(GameObject thisPlayer)
     {
         player = thisPlayer;
-
     }
 
     public GameObject GetPlayer()
