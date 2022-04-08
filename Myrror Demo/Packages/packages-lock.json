@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.grupo06.telemetria": {
-      "version": "file:C:/Users/usuario_local/Documents/GitHub/UAJ/Telemetria_G06",
+      "version": "file:../../Telemetria_G06",
       "depth": 0,
       "source": "local",
       "dependencies": {}
