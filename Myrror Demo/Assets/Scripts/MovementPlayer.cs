@@ -57,6 +57,11 @@ public class MovementPlayer : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Space) && jump)
         {
+            Grupo06.Telemetria.Instance.TrackEvent(
+                Grupo06.Telemetria.Instance.Jump().
+                                            X(transform.position.x).
+                                            Y(transform.position.y)
+            );
             GetComponents<FMODUnity.StudioEventEmitter>()[1].Play();
 
             if (contacts[0].normal.x > 0.9 && contacts[0].normal.x < 1.1 && player.velocity.y != 0) //Si colisiona por la derecha
