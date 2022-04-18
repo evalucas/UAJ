@@ -65,6 +65,11 @@ public class GameManager : MonoBehaviour {
         movementPlayer = player.GetComponent<MovementPlayer>();
         movementPlayer.FlipOnDeath();
         movementPlayer.Respawn(respawnPoint);
+        Telemetria.Instance.TrackEvent(
+            Telemetria.Instance.Death().
+                                X(transform.position.x).
+                                Y(transform.position.y)
+        );
         Debug.Log("PlayerDeath End");
     }
 

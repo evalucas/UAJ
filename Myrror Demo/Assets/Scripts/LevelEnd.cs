@@ -12,7 +12,12 @@ public class LevelEnd : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //cam.GetComponent<GiroCamara>().HRotation();
+        Grupo06.Telemetria.Instance.TrackEvent(
+            Grupo06.Telemetria.Instance.LevelEnd().
+                                        Nivel(gameObject.scene.buildIndex - 2)
+        );
         ChangeScene();
+        
     }
     public void ChangeScene()
     {

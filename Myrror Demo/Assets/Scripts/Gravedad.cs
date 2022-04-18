@@ -19,6 +19,11 @@ public class Gravedad : MonoBehaviour {
     {
         rb = collider.gameObject.GetComponent<Rigidbody2D>();
         initialSpeed = rb.velocity;
+        Grupo06.Telemetria.Instance.TrackEvent(
+            Grupo06.Telemetria.Instance.Collision().
+                                        Id(gameObject.GetInstanceID()).
+                                        Tag(tag)
+        );
         //Debug.Log(initialSpeed);
     }
     
