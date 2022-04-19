@@ -17,7 +17,7 @@ public class MovementPlayer : MonoBehaviour {
     {
         Grupo06.Telemetria.Instance.TrackEvent(
             Grupo06.Telemetria.Instance.LevelStart().
-                                        Nivel(gameObject.scene.buildIndex - 2)
+                                        Nivel(gameObject.scene.buildIndex)
         );
 
         player = gameObject.GetComponent<Rigidbody2D>();

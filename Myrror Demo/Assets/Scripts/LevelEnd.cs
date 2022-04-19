@@ -14,7 +14,7 @@ public class LevelEnd : MonoBehaviour {
         //cam.GetComponent<GiroCamara>().HRotation();
         Grupo06.Telemetria.Instance.TrackEvent(
             Grupo06.Telemetria.Instance.LevelEnd().
-                                        Nivel(gameObject.scene.buildIndex - 2)
+                                        Nivel(gameObject.scene.buildIndex)
         );
         ChangeScene();
         
