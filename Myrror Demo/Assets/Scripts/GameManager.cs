@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
+            Telemetria.Instance.TrackEvent(Telemetria.Instance.SessionStart());
         }
 
         else
@@ -103,5 +104,10 @@ public class GameManager : MonoBehaviour {
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    private void OnApplicationQuit()
+    {
+        Telemetria.Instance.TrackEvent(Telemetria.Instance.SessionEnd());
     }
 }
