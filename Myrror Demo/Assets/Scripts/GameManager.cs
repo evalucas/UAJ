@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour {
 
     public void PlayerDeath()
     {
-        Debug.Log("PlayerDeath Start");
+        //Debug.Log("PlayerDeath Start");
         movementPlayer = player.GetComponent<MovementPlayer>();
         movementPlayer.FlipOnDeath();
         movementPlayer.Respawn(respawnPoint);
@@ -71,13 +71,13 @@ public class GameManager : MonoBehaviour {
                                 X(transform.position.x).
                                 Y(transform.position.y)
         );
-        Debug.Log("PlayerDeath End");
+        //Debug.Log("PlayerDeath End");
     }
 
     public void SetSpawn(Transform newSpawn)
     {
         respawnPoint = newSpawn;
-        Debug.Log("Spawn set");
+        //Debug.Log("Spawn set");
     }
 
     public void ChangeScene(string scene)

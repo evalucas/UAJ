@@ -80,8 +80,18 @@ public class UIManager : MonoBehaviour {
     public void pauseGame()
     {
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
-        Grupo06.Telemetria.Instance.TrackEvent(
-            Grupo06.Telemetria.Instance.Pause()
-        );
+        if(menuPausa == true)
+        {
+            Grupo06.Telemetria.Instance.TrackEvent(
+                Grupo06.Telemetria.Instance.Pause()
+            );
+        }
+        else
+        {
+            Grupo06.Telemetria.Instance.TrackEvent(
+                Grupo06.Telemetria.Instance.UnPause()
+            );
+        }
+        
     }
 }

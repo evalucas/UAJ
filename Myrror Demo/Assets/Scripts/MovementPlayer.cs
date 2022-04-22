@@ -133,7 +133,7 @@ public class MovementPlayer : MonoBehaviour {
         GetComponents<FMODUnity.StudioEventEmitter>()[0].Play();
         transform.position = respawn.position;
         player.velocity = Vector2.zero;
-        Debug.Log("Respawned");
+        //Debug.Log("Respawned");
         transform.localScale = new Vector2(transform.localScale.x, Mathf.Abs(transform.localScale.y));
         player.gravityScale = Mathf.Abs(player.gravityScale);
     }
