@@ -12,6 +12,9 @@ public class MovementPlayer : MonoBehaviour {
     ContactPoint2D[] contacts = new ContactPoint2D[1];
     bool jump = false, flipped = false;
 
+    //Telemetria
+    float time = 0f;
+    float limitTime = 1.0f;
 	// Use this for initialization
 	void Start ()
     {
@@ -25,6 +28,20 @@ public class MovementPlayer : MonoBehaviour {
         GameManager.instance.SetPlayer(this.gameObject);
         player.mass = mass;
         player.gravityScale = gravity;
+    }
+
+    void SendPosition()
+    {
+        time += Time.deltaTime;
+        if (time > limitTime)
+        {
+            Grupo06.Telemetria.Instance.TrackEvent(
+                    Grupo06.Telemetria.Instance.PlayerPosition().
+                                                X(transform.position.x).
+                                                Y(transform.position.y)
+                );
+            time = 0f;
+        }
     }
 	
 	// Update is called once per frame
@@ -46,6 +63,9 @@ public class MovementPlayer : MonoBehaviour {
             audio.EventInstance.setParameterByName("Andando", Mathf.Abs(player.velocity.x) / maxSpeedX);
         }
         // Debug.Log(player.velocity.y);
+
+        //telemetría
+        SendPosition();
     }
     void FixedUpdate()
     {
@@ -67,6 +87,7 @@ public class MovementPlayer : MonoBehaviour {
                                             X(transform.position.x).
                                             Y(transform.position.y)
             );
+            
             GetComponents<FMODUnity.StudioEventEmitter>()[1].Play();
 
             if (contacts[0].normal.x > 0.9 && contacts[0].normal.x < 1.1 && player.velocity.y != 0) //Si colisiona por la derecha
