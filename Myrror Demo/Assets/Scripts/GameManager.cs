@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour {
     }
     private void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.F1))
         {
             SceneManager.LoadScene("Nivel 01");
@@ -46,6 +47,9 @@ public class GameManager : MonoBehaviour {
         {
             SceneManager.LoadScene("Nivel 04");
         }
+#endif
+
+
 
     }
 
