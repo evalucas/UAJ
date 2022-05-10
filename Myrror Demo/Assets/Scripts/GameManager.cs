@@ -87,13 +87,23 @@ public class GameManager : MonoBehaviour {
         {
             if (audio.IsPlaying())
             {
+                
                 if (scene == "Créditos" || scene == "Controles") audio.Stop();
             }
             else audio.Play();
         }
 
+        if(scene == "Nivel 01")
+        {
+            Invoke("endTest", 900); //15 minutos
+        }
 
         SceneManager.LoadScene(scene);
+    }
+
+    public void endTest()
+    {
+        ChangeScene("Finale");
     }
 
     public void GetUIManager(UIManager thisUIManager)
@@ -103,6 +113,7 @@ public class GameManager : MonoBehaviour {
 
     public void ExitGame()
     {
+        Debug.Log("exiting...");
         Application.Quit();
     }
 

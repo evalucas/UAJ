@@ -46,8 +46,8 @@ public class Finale : MonoBehaviour {
         owo = false;
         animator.Play("Smoke");
         transform.Rotate(new Vector3(0, 0, 90 * rotation));
-        yield return new WaitForSeconds(0.8f);
-        GameManager.instance.ChangeScene("Menu");
+        yield return new WaitForSeconds(5.0f);
+        GameManager.instance.ExitGame();
         Destroy(this.gameObject);
     }
 }
