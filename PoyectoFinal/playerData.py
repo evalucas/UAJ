@@ -46,7 +46,7 @@ class Player:
         self.nJumps[actualLevel]+=1
     def death(self,actualLevel):
         self.nDeaths[actualLevel]+=1
-        #self.resetPath(actualLevel) #borra el camino guardado hasta el momento, para quedarse con el último de cada nivel
+        self.resetPath(actualLevel) #borra el camino guardado hasta el momento, para quedarse con el último de cada nivel
 
     def pause(self,tiempo):
         if(self.pauseTime != 0):                            #si hay un primer pause                      
@@ -85,3 +85,8 @@ class Player:
 
     def hasLevelBeenCompleted(self, level):
         return level < self.levelsCompleted
+
+    def resetLevelInfo(self, level):
+        self.nJumps[level] = 0
+        self.nDeaths[level] = 0
+        self.resetPath(level)
