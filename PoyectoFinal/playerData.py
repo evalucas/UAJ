@@ -22,9 +22,13 @@ class Player:
 
     def __init__(self, nLevels) : #,form) seria lo que contenga la informacion de cada formulario, por ahora placeholder
         #inicializamos los vectores, los valores se meten mas tarde
+        self.paths = []
         self.nJumps = np.zeros(nLevels)
         self.nDeaths = np.zeros(nLevels)
-        #self.paths = un vector de vectores de caminos con tamaño nLevels; camino = vector de posiciones
+        #un vector de vectores de caminos con tamaño nLevels; camino = vector de posiciones
+        for i in range(nLevels):
+            p = []
+            self.paths.append(p)
         #Guardar datos del formulario, por ahora esta aqui pero puede ir en otro lado
         #self.age = 
         #self.generalExp = 
@@ -40,11 +44,28 @@ class Player:
         self.nJumps[actualLevel]+=1
     def death(self,actualLevel):
         self.nDeaths[actualLevel]+=1
-        #self.resetPath(actualLevel) #borra el camino guardado hasta el momento, para quedarse con el último de cada nivel
+        self.resetPath(actualLevel) #borra el camino guardado hasta el momento, para quedarse con el último de cada nivel
     def pause(self):
         self.nPause+=1
-    #def addToPath(self,pos,actualLevel):
+    def addToPath(self,pos,actualLevel):
         #añadir una posicion a un camino
-    #def resetPath(self, actualLevel):
+        self.paths[actualLevel].append(pos)
+    def resetPath(self, actualLevel):
         #borra el camino del nivel en el que toque
+        self.paths[actualLevel].clear()
+        #print("CLEARING PATH ", actualLevel, "...")
+        #print(self.paths[actualLevel])
+    def end(self):
+        #utilizo el sessionEnd para hacer el print final
+        self.informe()
+    def informe(self): #comento todo el metodo para que no se pete la consola de datos
+        print("INFORME JUGADOR ", self.ID)
+        print("Jumps: ", self.nJumps)
+        print("Deaths: ", self.nDeaths)
+        for i in range(len(self.paths)):
+            print("Path ", i, ": ", self.paths[i])
+        print("---------------------------------------------")
+
+
+
 
