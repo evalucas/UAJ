@@ -79,8 +79,8 @@ class Player:
         print("Jumps: ", self.nJumps)
         print("Deaths: ", self.nDeaths)
         print("Tiempo en pausa: ", self.tiempoEnPausa)
-        for i in range(len(self.paths)):
-            print("Path ", i, ": ", self.paths[i])
+        #for i in range(len(self.paths)):
+        #    print("Path ", i, ": ", self.paths[i])
         print("---------------------------------------------")
 
 
