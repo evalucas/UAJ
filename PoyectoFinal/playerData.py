@@ -11,7 +11,8 @@ class Player:
     paths = None #caminos recorridos por cada nivel
     nPause = 0 #numero de veces que ha pausado
     levelsCompleted = 0    #niveles completados por el jugador
-    tiempoEnPausa = 0       #Tiempo que el jugador se pasa en el menu de pausa
+    tiempoEnPausaPorNivel = None       #Tiempo que el jugador se pasa en el menu de pausa
+    tiempoPorNivel = None
     pauseTime = 0   
     #DATOS DEL FORMULARIO
     age = None
@@ -27,6 +28,8 @@ class Player:
         self.paths = []
         self.nJumps = np.zeros(nLevels)
         self.nDeaths = np.zeros(nLevels)
+        self.tiempoPorNivel = np.zeros(nLevels)
+        self.tiempoEnPausaPorNivel = np.zeros(nLevels)
         #un vector de vectores de caminos con tamaño nLevels; camino = vector de posiciones
         for i in range(nLevels):
             p = []
@@ -50,7 +53,7 @@ class Player:
 
     def pause(self,tiempo):
         if(self.pauseTime != 0):                            #si hay un primer pause                      
-            self.tiempoEnPausa += (tiempo - self.pauseTime) #Anade al tiempo de pausa total el de esta pausa
+            self.tiempoEnPausaPorNivel[self.levelsCompleted] += (tiempo - self.pauseTime) #Anade al tiempo de pausa total el de esta pausa
             self.pauseTime = 0 
         else:                                               #si no, cuenta una pausa
             self.pauseTime += tiempo                        #guarda el timestamp
@@ -71,14 +74,16 @@ class Player:
         self.informe()
 
     #Nivel finalizado +1 al contador de niveles superados
-    def lvlEnd(self):
+    def lvlEnd(self, tiempo):
+        self.tiempoPorNivel[self.levelsCompleted] = tiempo
         self.levelsCompleted += 1
 
     def informe(self): #comento todo el metodo para que no se pete la consola de datos
         print("INFORME JUGADOR ", self.ID)
         print("Jumps: ", self.nJumps)
         print("Deaths: ", self.nDeaths)
-        print("Tiempo en pausa: ", self.tiempoEnPausa)
+        print("Tiempo por nivel: ", self.tiempoPorNivel)
+        print("Tiempo en pausa: ", self.tiempoEnPausaPorNivel)
         #for i in range(len(self.paths)):
         #    print("Path ", i, ": ", self.paths[i])
         print("---------------------------------------------")
@@ -89,4 +94,5 @@ class Player:
     def resetLevelInfo(self, level):
         self.nJumps[level] = 0
         self.nDeaths[level] = 0
+        self.tiempoPorNivel[level] = 0
         self.resetPath(level)
