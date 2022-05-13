@@ -13,6 +13,7 @@ class Player:
     levelsCompleted = 0    #niveles completados por el jugador
     tiempoEnPausaPorNivel = None       #Tiempo que el jugador se pasa en el menu de pausa
     tiempoPorNivel = None
+    dictCambiosGravedadPorNivel = None
     pauseTime = 0   
     #DATOS DEL FORMULARIO
     age = None
@@ -30,6 +31,7 @@ class Player:
         self.nDeaths = np.zeros(nLevels)
         self.tiempoPorNivel = np.zeros(nLevels)
         self.tiempoEnPausaPorNivel = np.zeros(nLevels)
+        self.dictCambiosGravedadPorNivel = [dict() for i in range(nLevels)]
         #un vector de vectores de caminos con tamaño nLevels; camino = vector de posiciones
         for i in range(nLevels):
             p = []
@@ -78,12 +80,22 @@ class Player:
         self.tiempoPorNivel[self.levelsCompleted] = tiempo
         self.levelsCompleted += 1
 
+    #dictCambiosGravedadPorNivel es un array que para cada nviel tiene un diccionario con todos los cambios de gravedad y las veces que se ha pasado por ellos
+    def collision(self, tag, id):
+        if (tag == "CambiaGravedad"):
+            if (id in self.dictCambiosGravedadPorNivel[self.levelsCompleted]):
+                self.dictCambiosGravedadPorNivel[self.levelsCompleted][id] += 1
+            else:
+                self.dictCambiosGravedadPorNivel[self.levelsCompleted][id] = 1
+            
+
     def informe(self): #comento todo el metodo para que no se pete la consola de datos
         print("INFORME JUGADOR ", self.ID)
         print("Jumps: ", self.nJumps)
         print("Deaths: ", self.nDeaths)
         print("Tiempo por nivel: ", self.tiempoPorNivel)
         print("Tiempo en pausa: ", self.tiempoEnPausaPorNivel)
+        print("Cambios de gravedad: ", self.dictCambiosGravedadPorNivel)
         #for i in range(len(self.paths)):
         #    print("Path ", i, ": ", self.paths[i])
         print("---------------------------------------------")
@@ -91,9 +103,12 @@ class Player:
     def hasLevelBeenCompleted(self, level):
         return level < self.levelsCompleted
 
+
+    #reinicia toda la informacion de un nivel concreto
     def resetLevelInfo(self, level):
         self.nJumps[level] = 0
         self.nDeaths[level] = 0
         self.tiempoPorNivel[level] = 0
         self.tiempoEnPausaPorNivel[level] = 0
+        self.dictCambiosGravedadPorNivel[level].clear()
         self.resetPath(level)
