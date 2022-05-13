@@ -95,4 +95,5 @@ class Player:
         self.nJumps[level] = 0
         self.nDeaths[level] = 0
         self.tiempoPorNivel[level] = 0
+        self.tiempoEnPausaPorNivel[level] = 0
         self.resetPath(level)
