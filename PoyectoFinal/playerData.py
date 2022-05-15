@@ -36,7 +36,7 @@ class Player:
         self.tiempoEnPausaPorNivel = np.zeros(nLevels)
         self.dictCambiosGravedadPorNivel = [dict() for i in range(nLevels)]
         self.saltosZonasEspecialesPorNivel = [np.zeros(len(zonasEspeciales[i])) for i in range(nLevels)]
-
+        self.tiempoZonasEspecialesPorNivel = [np.zeros(len(zonasEspeciales[i])) for i in range(nLevels)]
         #un vector de vectores de caminos con tamaño nLevels; camino = vector de posiciones
         for i in range(nLevels):
             p = []
@@ -68,6 +68,8 @@ class Player:
         self.nJumps[actualLevel]+=1
     def jumpEspecial(self, actualLevel, zona):
         self.saltosZonasEspecialesPorNivel[actualLevel][zona] += 1
+    def tiempoEspecial(self, actualLevel, zona, time):
+        self.tiempoZonasEspecialesPorNivel[actualLevel][zona] = time
     def death(self,actualLevel):
         self.nDeaths[actualLevel]+=1
         self.resetPath(actualLevel) #borra el camino guardado hasta el momento, para quedarse con el último de cada nivel
@@ -115,7 +117,14 @@ class Player:
         print("Tiempo por nivel: ", self.tiempoPorNivel)
         print("Tiempo en pausa: ", self.tiempoEnPausaPorNivel)
         print("Cambios de gravedad: ", self.dictCambiosGravedadPorNivel)
-        print("Saltos por zona especial: ", self.saltosZonasEspecialesPorNivel)
+        i = 0
+        for s in self.saltosZonasEspecialesPorNivel:
+            print("Saltos por zonas especiales en el nivel ",i, s)
+            i = i+1
+        i = 0
+        for t in self.tiempoZonasEspecialesPorNivel:
+            print("Tiempo por zonas especiales: ", i , t)
+            i = i+1
         #for i in range(len(self.paths)):
         #    print("Path ", i, ": ", self.paths[i])
         print("---------------------------------------------")
