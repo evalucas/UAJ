@@ -69,7 +69,7 @@ class Player:
     def jumpEspecial(self, actualLevel, zona):
         self.saltosZonasEspecialesPorNivel[actualLevel][zona] += 1
     def tiempoEspecial(self, actualLevel, zona, time):
-        self.tiempoZonasEspecialesPorNivel[actualLevel][zona] = time
+        self.tiempoZonasEspecialesPorNivel[actualLevel][zona] += time
     def death(self,actualLevel):
         self.nDeaths[actualLevel]+=1
         self.resetPath(actualLevel) #borra el camino guardado hasta el momento, para quedarse con el último de cada nivel
