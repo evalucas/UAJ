@@ -152,4 +152,6 @@ class Player:
         self.tiempoPorNivel[level] = 0
         self.tiempoEnPausaPorNivel[level] = 0
         self.dictCambiosGravedadPorNivel[level].clear()
+        self.saltosZonasEspecialesPorNivel[level][:] = 0
+        self.tiempoZonasEspecialesPorNivel[level][:] = 0
         self.resetPath(level)
