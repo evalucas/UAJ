@@ -14,6 +14,8 @@ class Player:
     tiempoEnPausaPorNivel = None       #Tiempo que el jugador se pasa en el menu de pausa
     tiempoPorNivel = None
     dictCambiosGravedadPorNivel = None
+    saltosZonasEspecialesPorNivel = None
+    tiempoZonasEspecialesPorNivel = None
     pauseTime = 0   
     #DATOS DEL FORMULARIO
     age = None
@@ -24,7 +26,7 @@ class Player:
     level_dificulty = None
 
 
-    def __init__(self, nLevels) : #,form) seria lo que contenga la informacion de cada formulario, por ahora placeholder
+    def __init__(self, nLevels, zonasEspeciales) : #,form) seria lo que contenga la informacion de cada formulario, por ahora placeholder
         #inicializamos los vectores, los valores se meten mas tarde
         self.paths = []
         self.level_dificulty = []
@@ -33,6 +35,8 @@ class Player:
         self.tiempoPorNivel = np.zeros(nLevels)
         self.tiempoEnPausaPorNivel = np.zeros(nLevels)
         self.dictCambiosGravedadPorNivel = [dict() for i in range(nLevels)]
+        self.saltosZonasEspecialesPorNivel = [np.zeros(len(zonasEspeciales[i])) for i in range(nLevels)]
+
         #un vector de vectores de caminos con tamaño nLevels; camino = vector de posiciones
         for i in range(nLevels):
             p = []
@@ -62,6 +66,8 @@ class Player:
         self.level_dificulty.insert(level, d)
     def jump(self,actualLevel):
         self.nJumps[actualLevel]+=1
+    def jumpEspecial(self, actualLevel, zona):
+        self.saltosZonasEspecialesPorNivel[actualLevel][zona] += 1
     def death(self,actualLevel):
         self.nDeaths[actualLevel]+=1
         self.resetPath(actualLevel) #borra el camino guardado hasta el momento, para quedarse con el último de cada nivel
@@ -109,6 +115,7 @@ class Player:
         print("Tiempo por nivel: ", self.tiempoPorNivel)
         print("Tiempo en pausa: ", self.tiempoEnPausaPorNivel)
         print("Cambios de gravedad: ", self.dictCambiosGravedadPorNivel)
+        print("Saltos por zona especial: ", self.saltosZonasEspecialesPorNivel)
         #for i in range(len(self.paths)):
         #    print("Path ", i, ": ", self.paths[i])
         print("---------------------------------------------")
