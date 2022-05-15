@@ -25,6 +25,7 @@ class Player:
     def __init__(self, nLevels) : #,form) seria lo que contenga la informacion de cada formulario, por ahora placeholder
         #inicializamos los vectores, los valores se meten mas tarde
         self.paths = []
+        self.level_dificulty = []
         self.nJumps = np.zeros(nLevels)
         self.nDeaths = np.zeros(nLevels)
         #un vector de vectores de caminos con tamaño nLevels; camino = vector de posiciones
@@ -42,6 +43,18 @@ class Player:
     #metodos de eventos
     def setID(self, ID):
         self.ID = ID
+    def setAge(self, age):
+        self.age = age
+    def setGeneralExperience(self, exp):
+        self.generalExp = exp
+    def setPlatformExperience(self, exp):
+        self.platformExp = exp
+    def setWalljump(self, w):
+        self.walljump = w
+    def setGravity(self, g):
+        self.gravity = g
+    def setLevelDificulty(self, level, d):
+        self.level_dificulty.insert(level, d)
     def jump(self,actualLevel):
         self.nJumps[actualLevel]+=1
     def death(self,actualLevel):
@@ -68,19 +81,31 @@ class Player:
 
     def end(self):
         #utilizo el sessionEnd para hacer el print final
-        self.informe()
+        self.playerInforme()
 
     #Nivel finalizado +1 al contador de niveles superados
     def lvlEnd(self):
         self.levelsCompleted += 1
 
-    def informe(self): #comento todo el metodo para que no se pete la consola de datos
+    def playerInforme(self): #comento todo el metodo para que no se pete la consola de datos
         print("INFORME JUGADOR ", self.ID)
         print("Jumps: ", self.nJumps)
         print("Deaths: ", self.nDeaths)
         print("Tiempo en pausa: ", self.tiempoEnPausa)
         #for i in range(len(self.paths)):
         #    print("Path ", i, ": ", self.paths[i])
+        print("---------------------------------------------")
+    
+    def formularioInforme(self): #comento todo el metodo para que no se pete la consola de datos
+        print("INFORME FORMULARIO ", self.ID)
+        print("Age: ", self.age)
+        print("General Experience: ", self.generalExp)
+        print("Platform Experience: ", self.platformExp)
+        print("Gravity: ", self.gravity)
+        
+        for i in range(len(self.level_dificulty)):
+            print("Dificulty in level", i, ": ", self.level_dificulty[i])
+
         print("---------------------------------------------")
 
     def hasLevelBeenCompleted(self, level):
