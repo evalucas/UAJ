@@ -17,6 +17,7 @@ class Player:
     saltosZonasEspecialesPorNivel = None
     tiempoZonasEspecialesPorNivel = None
     pauseTime = 0   
+    numLevels = 0
     #DATOS DEL FORMULARIO
     age = None
     generalExp = -1
@@ -28,6 +29,7 @@ class Player:
 
     def __init__(self, nLevels, zonasEspeciales) : #,form) seria lo que contenga la informacion de cada formulario, por ahora placeholder
         #inicializamos los vectores, los valores se meten mas tarde
+        self.numLevels = nLevels
         self.paths = []
         self.level_dificulty = []
         self.nJumps = np.zeros(nLevels)
@@ -94,6 +96,8 @@ class Player:
 
     def end(self):
         #utilizo el sessionEnd para hacer el print final
+        for i in range(self.levelsCompleted, self.numLevels):
+            self.resetLevelInfo(i, -1)
         self.playerInforme()
 
     #Nivel finalizado +1 al contador de niveles superados
@@ -146,12 +150,12 @@ class Player:
 
 
     #reinicia toda la informacion de un nivel concreto
-    def resetLevelInfo(self, level):
-        self.nJumps[level] = 0
-        self.nDeaths[level] = 0
-        self.tiempoPorNivel[level] = 0
-        self.tiempoEnPausaPorNivel[level] = 0
+    def resetLevelInfo(self, level, defaultValue):
+        self.nJumps[level] = defaultValue
+        self.nDeaths[level] = defaultValue
+        self.tiempoPorNivel[level] = defaultValue
+        self.tiempoEnPausaPorNivel[level] = defaultValue
         self.dictCambiosGravedadPorNivel[level].clear()
-        self.saltosZonasEspecialesPorNivel[level][:] = 0
-        self.tiempoZonasEspecialesPorNivel[level][:] = 0
+        self.saltosZonasEspecialesPorNivel[level][:] = defaultValue
+        self.tiempoZonasEspecialesPorNivel[level][:] = defaultValue
         self.resetPath(level)
