@@ -138,7 +138,8 @@ class Player:
         print("Age: ", self.age)
         print("General Experience: ", self.generalExp)
         print("Platform Experience: ", self.platformExp)
-        print("Gravity: ", self.gravity)
+        print("Dificulty of Gravity Switches: ", self.gravity)
+        print("Dificulty of Walljumps: ", self.walljump)
         
         for i in range(len(self.level_dificulty)):
             print("Dificulty in level", i, ": ", self.level_dificulty[i])
