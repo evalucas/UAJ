@@ -67,12 +67,8 @@ class Player:
     def jump(self,actualLevel):
         self.nJumps[actualLevel]+=1
     def jumpEspecial(self, actualLevel, zona):
-        if (actualLevel == 0 and zona > 0): 
-            print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         self.saltosZonasEspecialesPorNivel[actualLevel][zona] += 1
     def tiempoEspecial(self, actualLevel, zona, time):
-        if (actualLevel == 0 and zona > 0): 
-            print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
         self.tiempoZonasEspecialesPorNivel[actualLevel][zona] += time
     def death(self,actualLevel):
         self.nDeaths[actualLevel]+=1
